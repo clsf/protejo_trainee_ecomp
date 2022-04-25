@@ -14,6 +14,13 @@ class EcompUsuarioController extends Controller
     }
 
     public function logar(Request $request){
+        $this->validate($request,[
+            'login'=>'required',
+            'senha'=>'required'
+        ],[
+            'login.required'=>'Login é obrigatório',
+            'senha.required'=>'Senha é obrigatória'
+        ]);
 
         $usuario = new EcompUsuario();
         

@@ -15,25 +15,35 @@
 </head>
 
 <body>
-    <form  action="/logando" method="POST" style="text-align : center; font-weight: bold">
+    <form action="/logando" method="POST" style="text-align : center; font-weight: bold">
         @csrf
         <div class="col-sm-3 my-1 mx-auto mt-5">
-                <label for="login">Login</label>
-                <input type="text" class="form-control" name="login" id="login"  placeholder="Seu Login">
-                
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
-            <div class="col-sm-3 my-1 mx-auto">
-                <label for="senha">Senha</label>
-                <input type="text" class="form-control" name="senha" id="senha" placeholder="Senha">
-            </div>
-            <div class="mt-5">
+            @endif
+
+            <label for="login">Login</label>
+            <input type="text" class="form-control" name="login" id="login" placeholder="Seu Login">
+
+        </div>
+        <div class="col-sm-3 my-1 mx-auto">
+            <label for="senha">Senha</label>
+            <input type="text" class="form-control" name="senha" id="senha" placeholder="Senha">
+        </div>
+        <div class="mt-5">
             <button type="submit" class="btn btn-primary">Entrar</button>
-            </div>
-           
+        </div>
+
     </form>
 
     <div class="mt-5" style="text-align : center; font-weight: bold">
-        <a href="/cadastrarUsuario"><button type="submit" class="btn btn-primary" >Cadastrar</button></a>
+        <a href="/cadastrarUsuario"><button type="submit" class="btn btn-primary">Cadastrar</button></a>
     </div>
 
 
